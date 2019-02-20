@@ -32,13 +32,13 @@ public class RandIntegerWithoutRepetitionGenerator {
     /**
      * Method which returns a random integer without repetition
      * @return A random integer without repetition
-     * @throws Exception if is not possible to extract any other integer because of repetition an exception is thrown.
+     * @throws NoMoreIntegersToGenerateException if is not possible to extract any other integer because of repetition a NoMoreNumbersToGenerateException is thrown.
      */
-    public final int nextInt() throws Exception {
+    public final int nextInt() throws NoMoreIntegersToGenerateException {
         if (!numbers.isEmpty()) {
             return numbers.remove(0);
         } else {
-            throw new Exception("No more possible extractions");
+            throw new NoMoreIntegersToGenerateException();
         }
     }
 

@@ -20,7 +20,7 @@ public class RandIntegerWithoutRepetitionGeneratorTest {
     }
 
     @Test
-    public void ifBetween0And1Extract0Or1() throws Exception {
+    public void ifBetween0And1Extract0Or1() throws NoMoreIntegersToGenerateException {
         int min = 0;
         int max = 1;
         RandIntegerWithoutRepetitionGenerator rand = new RandIntegerWithoutRepetitionGenerator(min, max);
@@ -63,11 +63,11 @@ public class RandIntegerWithoutRepetitionGeneratorTest {
         Exception exOccurred = null;
         try {
             rand.nextInt();
-        } catch (Exception ex) {
+        } catch (NoMoreIntegersToGenerateException ex) {
             exOccurred = ex;
         } finally {
             assertNotNull(exOccurred);
-            assertEquals("No more possible extractions", exOccurred.getMessage());
+            assertTrue(exOccurred instanceof NoMoreIntegersToGenerateException);
         }
     }
 }
